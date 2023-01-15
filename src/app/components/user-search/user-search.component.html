@@ -1,0 +1,10 @@
+<div class="flex justify-center mb-2">
+  <div class="w-4/5 md:w-3/5">
+    <nz-input-group nzSearch [nzAddOnAfter]="suffixButton">
+      <input type="text" nz-input [(ngModel)]="searchText" [placeholder]="placeholder" />
+    </nz-input-group>
+    <ng-template #suffixButton>
+      <button nz-button nzType="primary" nzSearch (click)="handleUserSearch()">Search</button>
+    </ng-template>
+  </div>
+</div>

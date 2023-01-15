@@ -1,0 +1,31 @@
+<div class="w-full flex justify-center align-middle">
+  <nz-card
+    class="border rounded-md border-solid border-teal-200 w-4/5 max-w-sm sm:max-w-md"
+    nzTitle="User Details"
+  >
+    <div [ngSwitch]="userDetailsStatus">
+      <ng-template [ngSwitchCase]="'success'">
+        <div>
+          <img
+            nz-image
+            [nzSrc]="userDetails.avatar_url"
+            [alt]="userDetails.name"
+            class="border border-solid border-red-600 rounded-full w-1/4 sm:w-24 sm:h-24"
+          />
+          <h2 nz-typography class="mt-2">{{ userDetails.name }}</h2>
+        </div>
+        <p nz-typography class="text-sm">{{ userDetails.bio }}</p>
+        <a target="_blank" [href]="userDetails.github_url">Github URL</a>
+      </ng-template>
+      <ng-template [ngSwitchCase]="'loading'">
+        <app-loader></app-loader>
+      </ng-template>
+      <ng-template [ngSwitchCase]="'error'">
+        <app-error [errorMessage]="errorMessage"></app-error>
+      </ng-template>
+      <ng-template ngSwitchDefault>
+        <app-empty></app-empty>
+      </ng-template>
+    </div>
+  </nz-card>
+</div>

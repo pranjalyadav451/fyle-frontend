@@ -1,0 +1,29 @@
+<nz-card [nzTitle]="repo.name | titlecase">
+  <div>
+    <p class="text-ellipsis h-4/5 overflow-hidden whitespace-nowrap">
+      {{ repo.description }}
+    </p>
+    <p>
+      <a target="_blank" href="{{ repo.html_url }}">View on Github</a>
+    </p>
+    <p class="flex flex-wrap" [ngSwitch]="repoLangStatus">
+      <ng-template [ngSwitchCase]="'success'">
+        <span
+          *ngFor="let lang of repoLanguages"
+          class="bg-gray-200 inline-block rounded-full px-2 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2"
+        >
+          {{ lang }}
+        </span>
+      </ng-template>
+      <ng-template [ngSwitchCase]="'loading'">
+        <app-loader [isAvatar]="false" [numRows]="1"></app-loader>
+      </ng-template>
+      <ng-template [ngSwitchCase]="'error'">
+        <app-error [errorMessage]="errorMessage"></app-error>
+      </ng-template>
+      <ng-template ngSwitchDefault>
+        <app-empty></app-empty>
+      </ng-template>
+    </p>
+  </div>
+</nz-card>
