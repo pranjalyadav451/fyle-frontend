@@ -9,7 +9,7 @@ import { HttpRequestStatus, Repository } from "src/utils/types";
   styleUrls: ["./repo-list.component.css"],
 })
 export class RepoListComponent {
-  totalPages = 0;
+  totalRepos = 0;
   currentPage = DEFAULT_PAGE_NUMBER;
   pageSize = DEFAULT_PAGE_SIZE;
   userName = "";
@@ -21,7 +21,7 @@ export class RepoListComponent {
   constructor(private appService: AppService) {}
 
   getTotalRepos(repos: number) {
-    this.totalPages = Math.ceil(repos / this.pageSize);
+    this.totalRepos = repos;
   }
   getUserName(userName: string) {
     this.userName = userName;

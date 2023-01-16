@@ -25,6 +25,7 @@ export class UserDetailsComponent {
     this.appService.getUser(userName).subscribe({
       next: (res: any) => {
         this.userDetails = res.data as User;
+        // console.log(this.userDetails);
         this.afterGettingUserRepos.emit(this.userDetails.public_repos);
         this.userDetailsStatus = "success";
       },
