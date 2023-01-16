@@ -1,18 +1,30 @@
-<nz-card [nzTitle]="repo.name | titlecase">
+<nz-card [nzTitle]="repo.name | titlecase" class="h-full w-full">
   <div>
     <p class="text-ellipsis h-4/5 overflow-hidden whitespace-nowrap">
       {{ repo.description }}
     </p>
     <p>
-      <a target="_blank" href="{{ repo.html_url }}">View on Github</a>
+      <a
+        target="_blank"
+        class="bg-gray-100 inline-block rounded-full px-3 py-2 text-sm font-semibold text-purple-700 mr-2 mb-2 outline-2 outline-slate-700"
+        href="{{ repo.html_url }}"
+        >View on Github</a
+      >
     </p>
     <p class="flex flex-wrap" [ngSwitch]="repoLangStatus">
       <ng-template [ngSwitchCase]="'success'">
+        <h5 nz-typography class="text-gray-700 mr-2 mb-2">Languages:</h5>
         <span
           *ngFor="let lang of repoLanguages"
           class="bg-gray-200 inline-block rounded-full px-2 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2"
         >
           {{ lang }}
+        </span>
+        <span
+          *ngIf="repoLanguages.length === 0"
+          class="bg-red-200 inline-block rounded-full px-2 py-1 text-xs font-semibold text-red-700 mr-2 mb-2"
+        >
+          No languages found
         </span>
       </ng-template>
       <ng-template [ngSwitchCase]="'loading'">
