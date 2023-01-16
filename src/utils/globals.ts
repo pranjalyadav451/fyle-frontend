@@ -1,3 +1,3 @@
-export const BACKEND_URL = "http://localhost:5000";
+export const BACKEND_URL = process.env["backend"] || "http://localhost:5000";
 export const DEFAULT_PAGE_SIZE = 10;
 export const DEFAULT_PAGE_NUMBER = 1;
